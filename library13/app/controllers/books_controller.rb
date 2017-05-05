@@ -18,9 +18,19 @@ class BooksController < ApplicationController
       end
   end
   
+  def edit
+    @book = Book.find_by(id: params[:id])
+  end
   
-  
-  
+  def update
+      @book = Book.find_by(id: params[:id])
+
+      if @book.update(book_params)
+        redirect_to books_path, notice: "書本資料更新成功。"
+      else
+        render :edit
+      end
+    end
   
   
   
