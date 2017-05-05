@@ -32,7 +32,11 @@ class BooksController < ApplicationController
       end
     end
   
-  
+  def destroy
+      @book = Book.find_by(id: params[:id])
+      @book.destroy if @book
+      redirect_to books_path, notice: "書本資料已刪除!你無法後悔了~~~"
+    end
   
   
   
