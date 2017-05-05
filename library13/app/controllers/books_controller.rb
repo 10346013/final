@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
   
   def index
     @books = Book.all
@@ -19,12 +20,11 @@ class BooksController < ApplicationController
   end
   
   def edit
-    @book = Book.find_by(id: params[:id])
+    
   end
   
   def update
-      @book = Book.find_by(id: params[:id])
-
+      
       if @book.update(book_params)
         redirect_to books_path, notice: "書本資料更新成功。"
       else
@@ -33,11 +33,13 @@ class BooksController < ApplicationController
     end
   
   def destroy
-      @book = Book.find_by(id: params[:id])
       @book.destroy if @book
       redirect_to books_path, notice: "書本資料已刪除!你無法後悔了~~~"
     end
   
+  def show
+    
+  end
   
   
   
@@ -46,14 +48,16 @@ class BooksController < ApplicationController
   
   
   
-  
-  
+  def find_book
+    @book = Book.find_by(id: params[:id])
+    redirect_to books_path, notice: "no data!" if @book.nil?
+  end
   
   
   
   private
     def book_params
-      params.require(:book).permit(:bookname, :author, :price, :introduction)
+      params.require("book").permit(:bookname, :author, :price, :introduction)
     end
   
 end
