@@ -1,35 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>成績列表</h1>
-<%= link_to "新增學生", new_score_paper_path, class: "btn btn-success" %>
+<h1><b><font face="微軟正黑體">成績列表</font></b></h1>
+<b><font face="微軟正黑體"><%= link_to "新增學生", new_score_paper_path, class: "btn btn-success" %></font></b>
 <hr>
-<h5>
-  分數級別說明：90分以上 S/80~89：A/70~79：B級/60~69：C級/未滿60：D級
-</h5>
+<h4><b><font face="微軟正黑體">分數級別說明：90分以上 S/80~89：A/70~79：B級/60~69：C級/未滿60：D級</font></b></h4>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>姓名</th>
-      <th>學號</th>
-      <th>分數</th>
-      <th>處理</th>
+      <th><b><font face="微軟正黑體" size="+1">姓名</font></b></th>
+      <th><b><font face="微軟正黑體" size="+1">學號</font></b></th>
+      <th><b><font face="微軟正黑體" size="+1">分數</font></b></th>
+      <th><b><font face="微軟正黑體" size="+1">處理</font></b></th>
     </tr>
   </thead>
 
   <tbody>
     <% @score_papers.each do |score_paper| %>
       <tr>
-        <td><%= score_paper.name %></td>
-        <td><%= score_paper.studentID %></td>
-        <td><%= link_to score_paper.is_level(score_paper.score), score_paper %>(<%= score_paper.score %>)</td>
-        <td><%= link_to '編輯', edit_score_paper_path(score_paper), class: "btn btn-success btn-xs" %></td>
-        <td><%= link_to '刪除', score_paper, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+        <td><b><font face="微軟正黑體"><%= score_paper.name %></font></b></td>
+        <td><b><font face="微軟正黑體"><%= score_paper.studentID %></font></b></td>
+        <td><b><font face="微軟正黑體"><%= link_to score_paper.is_level(score_paper.score), score_paper %>(<%= score_paper.score %>)</font></b></td>
+        <td><b><font face="微軟正黑體"><%= link_to '編輯', edit_score_paper_path(score_paper), class: "btn btn-success btn-xs" %></font></b></td>
+        <td><b><font face="微軟正黑體"><%= link_to '刪除', score_paper, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></font></b></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Score Paper', new_score_paper_path %>
