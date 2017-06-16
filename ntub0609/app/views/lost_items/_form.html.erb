@@ -1,0 +1,37 @@
+<%= form_for(lost_item) do |f| %>
+  <% if lost_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lost_item.errors.count, "error") %> prohibited this lost_item from being saved:</h2>
+
+      <ul>
+      <% lost_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :found_date %>
+    <%= f.date_select :found_date %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
