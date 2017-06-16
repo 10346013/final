@@ -1,0 +1,2 @@
+class ScorePaper < ApplicationRecord
+end
