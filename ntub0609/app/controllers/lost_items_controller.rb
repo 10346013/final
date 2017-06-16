@@ -5,7 +5,14 @@ class LostItemsController < ApplicationController
   # GET /lost_items
   # GET /lost_items.json
   def index
-    @lost_items = LostItem.available
+#     if current_user.role == "staff"
+#       @lost_items = LostItem.all
+#     else
+#       @lost_items = LostItem.available
+#     end
+    
+    @lost_items = LostItem.available_for(current_user)
+    
   end
 
   # GET /lost_items/1
